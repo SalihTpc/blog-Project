@@ -16,7 +16,7 @@
     <title>{% block title %}NHL Teams{% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <div class="container-fluid">
         <a href="{% url 'home' %}"><img src="https://www-league.nhlstatic.com/images/logos/league-dark/133-flat.svg" alt="nhl" width="50px" class="navbar-brand"></img></a>
         <button
@@ -39,7 +39,6 @@
         </div>
       </div>
     </nav>
-    <br />
     <div class="container">{% block content %} {% endblock %}</div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
