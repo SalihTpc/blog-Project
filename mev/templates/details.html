@@ -3,6 +3,12 @@
 {% block content %}
 <section style="margin-top:100px;">
   <div class="jumbotron">
+    <img
+        src="{{post.pics}}"
+        class="card-img-top"
+        alt="{{post.title}}"
+        height="286px"
+      />
   <h1 class="display-3">{{ post.title }}</h1>
   <p class="lead">By: {{ post.author }} - Time: {{ post.post_date }}</p>
   <hr class="my-4">

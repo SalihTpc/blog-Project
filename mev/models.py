@@ -8,6 +8,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
+    # pics = models.ImageField(upload_to='pics', blank=True)
+    pics = models.CharField(max_length=255)
     
     
     def __str__(self):
