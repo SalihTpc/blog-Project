@@ -2,17 +2,35 @@
 {% block title %} Delete Blog Post {% endblock %}
 
 {% block content %}
-<section style="margin-top: 100px">
-<h2>Delete Post : {{ post.title }}</h2><br><br>
-<div class="form-group">
-    <form action="" method="POST">
-        {% csrf_token %}
-        <strong>Are you sure?!</strong><br><br>
-        <button class="btn btn-secondary">Delete</button>
-    </form>
-</div>
-</section>
 
+<section style="margin-top: 100px">
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h2>Delete Post : {{ post.title }}</h2><br><br>
+        <div class="form-group">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <strong>Are you sure?!</strong><br><br>
+                <button class="btn btn-secondary">Delete</button>
+            </form>
+        </div>
+    {% else %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Wrong Page!!!</strong> You're not allowed here! You should go back to Home Page.
+        </div>
+        <p class="lead">
+            <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button">Back</a>
+        </p>
+    {% endif %}
+{% else %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Wrong Page!!!</strong> You're not allowed here! You should go back to Home Page.
+</div>
+<p class="lead">
+    <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button">Back</a>
+</p>
+{% endif %}
+</section>
 
 {% endblock %}
 

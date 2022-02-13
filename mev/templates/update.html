@@ -2,6 +2,7 @@
 {% block title %} Update Blog Post {% endblock %}
 {% block content %}
 <section style="margin-top: 100px">
+{% if user.is_authenticated %}
   <h2>Update Post</h2>
   <br>
   <div class="form-group">
@@ -10,6 +11,13 @@
       <button class="btn btn-secondary">Update</button>
     </form>
   </div>
+{% else %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Wrong Page!!!</strong>You're not allowed here!You should go back to Home Page.
+</div>
+<p class="lead">
+    <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button">Back</a>
+</p>
+{% endif %}
 </section>
-
 {% endblock %}

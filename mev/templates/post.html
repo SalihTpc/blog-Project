@@ -2,8 +2,9 @@
 {% block title %} Create a New Post!!! {% endblock %}
 
 {% block content %}
-
-<h2>Add Post</h2><br><br>
+{% if user.is_authenticated %}
+<section style="margin-top: 100px">
+<h2>Add Post</h2><br>
 <div class="form-group">
     <form action="" method="POST">
         {% csrf_token %}
@@ -11,7 +12,19 @@
         <button class="btn btn-secondary">Post</button>
     </form>
 </div>
-
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("user").value = name
+</script>
+{% else %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Wrong Page!!!</strong> You're not allowed here! You should go back to Home Page.
+</div>
+<p class="lead">
+    <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button">Back</a>
+</p>
+{% endif %}
+</section>
 
 {% endblock %}
 

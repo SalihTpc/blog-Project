@@ -4,12 +4,16 @@
 <section style="margin-top:100px;">
   <div class="jumbotron">
   <h1 class="display-3">{{ post.title }}</h1>
-  <p class="lead">By: {{ post.author.first_name }} {{ post.author.last_name }}</p>
+  <p class="lead">By: {{ post.author }} - Time: {{ post.post_date }}</p>
   <hr class="my-4">
-  <p>{{post.body}}</p>
+  <p>{{post.body|safe}}</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'update' post.pk %}" role="button">Edit</a>
-    <a class="btn btn-primary btn-lg" href="{% url 'delete' post.pk %}" role="button">Delete</a>
+    {% if user.is_authenticated %}
+      {% if user.id == post.author.id %}
+        <a class="btn btn-primary btn-lg" href="{% url 'update' post.pk %}" role="button">Edit</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'delete' post.pk %}" role="button">Delete</a>
+      {% endif %}
+    {% endif %}
   </p>
   <p class="lead">
     <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button">Back</a>
