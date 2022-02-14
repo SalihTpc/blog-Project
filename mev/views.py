@@ -12,6 +12,10 @@ class HomeView(ListView):
     template_name = "home.html"
     # ordering = ["-id"]
     ordering = ["-post_date"]
+
+def CategoryView(request, teams):
+    
+    return render(request, "categories.html", {"teams":teams})
     
 class DetailView(DetailView):
     model = Post

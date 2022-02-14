@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, DetailView, AddPostView, UpdatePostView, DeletePostView
+from .views import HomeView, DetailView, AddPostView, UpdatePostView, DeletePostView, CategoryView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path("blog/<int:pk>", DetailView.as_view(), name="details"),
     path("add_post/", AddPostView.as_view(), name="add_post"),
     path("edit/<int:pk>", UpdatePostView.as_view(), name="update"),
-    path("delete/<int:pk>", DeletePostView.as_view(), name="delete")
+    path("delete/<int:pk>", DeletePostView.as_view(), name="delete"),
+    path("category/<str:teams>", CategoryView, name="categories")
 ] 
 # + static(settings.Media_URL, document_root=settings.MEDIA_ROOT)
