@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section style="margin-top: 100px">
+
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
         <h2>Delete Post : {{ post.title }}</h2><br><br>
@@ -23,14 +23,18 @@
         </p>
     {% endif %}
 {% else %}
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Wrong Page!!!</strong> You're not allowed here! You should go back to Home Page.
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+<div>
+<strong>Wrong Page!!!</strong> You're not allowed here! You
+should go back to Home Page.
+</div>
 </div>
 <p class="lead">
     <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button">Back</a>
 </p>
 {% endif %}
-</section>
+
 
 {% endblock %}
 

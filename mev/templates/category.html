@@ -1,15 +1,14 @@
-{% extends "base.html" %} {% block content %}
-
+{% extends "base.html" %} {% block content %} {% if category_posts %}
 <section class="bg-light pb-5 shadow-sm">
   <div class="container mt-5">
     <div class="row">
       <div class="col-12">
-        <h3 class="text-uppercase text-center border-bottom mb-4">nhl teams</h3>
+        <h3 class="text-uppercase text-center border-bottom mb-4">{{teams}}</h3>
       </div>
     </div>
   </div>
   <div class="row">
-    {% for post in object_list %}
+    {% for post in category_posts %}
     <div class="col-lg-4 mb-3 d-flex align-items-stretch">
       <div class="card">
         <img
@@ -21,7 +20,7 @@
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{post.title}}</h4>
           <h6 class="card-subtitle mb-2 text-muted">
-            By: {{ post.author|title }} - {{post.category}}
+            By: {{ post.author }} - {{post.category}}
           </h6>
           <p class="card-text mb-4">{{post.body|slice:":100"|safe}}</p>
           <a
@@ -38,8 +37,20 @@
     {% endfor %}
   </div>
 </section>
+{% else %}
 
+  <div class="alert alert-danger d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+    <strong>Wrong Page!!!</strong> Sorry this category does not exits! You
+    should go back to Home Page.
+  </div>
+  </div>
+  <p class="lead">
+    <a class="btn btn-secondary btn-lg" href="{% url 'home' %}" role="button"
+      >Back</a
+    >
+  </p>
+  
 
-
-
-{% endblock %}
+{% endif %} {% endblock %}

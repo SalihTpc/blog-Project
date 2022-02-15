@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %} {{post.title}} {% endblock %}
 {% block content %}
-<section style="margin-top: 100px">
+
   <div class="jumbotron">
     <img
       src="{{post.pics}}"
@@ -10,15 +10,18 @@
       height="286px"
     />
     <h1 class="display-3">{{ post.title }}</h1>
-    <p class="lead">{{ post.category }}</p>
     <p class="lead">
-      By: {{ post.author }} - Time: {{ post.post_date }} - Since post: {{
-      post.post_date|timesince }} ego
+      <a class="btn btn-secondary btn-lg" href="{% url 'category' post.category %}" role="button"
+        >{{ post.category }}</a
+      ></p>
+    <p class="lead">
+      By: {{ post.author }} - Time: {{ post.post_date }} - Since post: {{ post.post_date|timesince }} ego
     </p>
     <hr class="my-4" />
     <p>{{post.body|safe}}</p>
     <p class="lead">
-      {% if user.is_authenticated %} {% if user.id == post.author.id %}
+      {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
       <a
         class="btn btn-primary btn-lg"
         href="{% url 'update' post.pk %}"
@@ -39,6 +42,6 @@
       >
     </p>
   </div>
-</section>
+
 
 {% endblock %}
