@@ -20,7 +20,11 @@ class Post(models.Model):
     post_date = models.DateField(auto_now_add=True)
     # pics = models.ImageField(upload_to='pics', blank=True)
     pics = models.CharField(max_length=255)
-    category = models.CharField(max_length=255, default="coding")
+    category = models.CharField(max_length=255)
+    likes = models.ManyToManyField(User, related_name="posts")
+    
+    def total_likes(self):
+        return self.likes.count()
     
     
     def __str__(self):
