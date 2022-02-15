@@ -2,8 +2,7 @@
 {% block title %} Register {% endblock %}
 {% block content %}
 
-<h2>Register</h2>
-<br /><br />
+<h2 class="mb-3">Register</h2>
 <div class="form-group">
   <form action="" method="POST">
     {% csrf_token %} {{form.as_p}}

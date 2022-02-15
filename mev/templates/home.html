@@ -14,9 +14,9 @@
       <div class="card">
         <img
           src="{{post.pics}}"
-          class="card-img-top"
+          class="card-img-top mt-2"
           alt="{{post.title}}"
-          height="286px"
+          max-height="286px"
         />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{post.title}}</h4>
@@ -38,8 +38,6 @@
     {% endfor %}
   </div>
 </section>
-
-
 
 
 {% endblock %}

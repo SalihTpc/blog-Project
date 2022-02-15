@@ -3,11 +3,20 @@
 {% block content %}
 
 <h2>Login</h2>
-<br /><br />
+<br>
 <div class="form-group">
   <form action="" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <button class="btn btn-secondary">Login</button>
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="exampleInputUsername" class="form-label">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp" name="username" placeholder="Username">
+    <div id="usernameHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-5">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+    </div>
+    <button class="btn btn-lg btn-secondary">Login</button>
   </form>
 </div>
 
