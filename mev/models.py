@@ -14,13 +14,17 @@ class Category(models.Model):
         return reverse("home")
 
 class Post(models.Model):
+    choices = Category.objects.all().values_list("name", "name")
+    choice_list = []
+    for item in choices:
+        choice_list.append(item)
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     # pics = models.ImageField(upload_to='pics', blank=True)
     pics = models.CharField(max_length=255)
-    category = models.CharField(max_length=255, default="coding")
+    category = models.CharField(max_length=255, choices=choice_list)
     likes = models.ManyToManyField(User, related_name="posts")
     
     def total_likes(self):
